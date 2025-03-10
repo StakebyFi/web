@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "dev": "next dev --turbopack",
+    "dev": "next dev --experimental-https",
     "build": "next build",
     "start": "next start",
     "lint": "eslint . --ext .ts,.tsx -c .eslintrc.json --fix"
@@ -43,6 +43,7 @@
     "clsx": "2.1.1",
     "cobe": "^0.6.3",
     "framer-motion": "^12.4.7",
+    "fs": "0.0.1-security",
     "intl-messageformat": "^10.5.0",
     "lucide-react": "^0.477.0",
     "motion": "^12.4.10",
@@ -54,6 +55,7 @@
     "rxjs": "^7.8.2",
     "tailwind-merge": "^3.0.2",
     "tsparticles": "^3.8.1",
+    "viem": "^2.23.9",
     "zod": "^3.24.2"
   },
   "devDependencies": {

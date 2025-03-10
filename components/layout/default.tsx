@@ -2,6 +2,7 @@
 
 import { Link } from "@heroui/link";
 import dynamic from 'next/dynamic';
+import { ElvenInit } from "../elven-ui/elven-init";
 
 const Navbar = dynamic(() => import('../navbar').then(mod => mod.default), {
   ssr: false
@@ -17,8 +18,9 @@ export default function DefaultLayout({
 }) {
   return (
     <html suppressHydrationWarning lang="en">
-      <body className="bg-[#000] overflow-x-hidden">
+      <body className="bg-[#131625] overflow-x-hidden">
         <Providers themeProps={{ attribute: "class", defaultTheme: "dark" }}>
+        <ElvenInit />
           <div className="min-h-screen w-screen flex flex-col justify-between antialiased max-w-7xl mx-auto">
             <div className="flex flex-col flex-1 pb-5 px-5 sm:px-10 items-center w-full mx-auto text-white">
               <Navbar />

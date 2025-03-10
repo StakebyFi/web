@@ -1,15 +1,15 @@
 "use client"
 
-import { useAccount } from 'wagmi'
+import { useAccount } from '@useelven/core';
 import GenerateComponent from './_components/GenerateComponent'
 import WalletConnection from '@/components/wallet-connection';
 
 export default function Page() {
-  const { isConnected } = useAccount();
+  const { address } = useAccount();
 
   return (
     <section id='chat' className='flex-grow flex flex-col items-center justify-center relative'>
-      {isConnected ? <GenerateComponent /> : <WalletConnection />}
+      {address ? <GenerateComponent /> : <WalletConnection />}
     </section>
   )
 }

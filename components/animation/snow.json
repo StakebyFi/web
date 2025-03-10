@@ -2,12 +2,11 @@
   "autoPlay": true,
   "background": {
     "color": {
-      "value": "#000000"
+      "value": "#131625"
     },
-    "image": "",
-    "position": "",
-    "repeat": "",
-    "size": "",
+    "position": "50% 50%",
+    "repeat": "no-repeat",
+    "size": "20%",
     "opacity": 1
   },
   "backgroundMask": {
@@ -34,8 +33,8 @@
     "detectsOn": "window",
     "events": {
       "onClick": {
-        "enable": false,
-        "mode": {}
+        "enable": true,
+        "mode": "repulse"
       },
       "onDiv": {
         "selectors": {},
@@ -44,8 +43,8 @@
         "type": "circle"
       },
       "onHover": {
-        "enable": false,
-        "mode": {},
+        "enable": true,
+        "mode": "bubble",
         "parallax": {
           "enable": false,
           "force": 2,
@@ -75,9 +74,17 @@
         "distance": 200
       },
       "bubble": {
-        "distance": 200,
-        "duration": 0.4,
-        "mix": false
+        "distance": 250,
+        "duration": 2,
+        "mix": false,
+        "opacity": 0,
+        "size": 0,
+        "divs": {
+          "distance": 200,
+          "duration": 0.4,
+          "mix": false,
+          "selectors": {}
+        }
       },
       "connect": {
         "distance": 80,
@@ -87,7 +94,7 @@
         "radius": 60
       },
       "grab": {
-        "distance": 100,
+        "distance": 400,
         "links": {
           "blink": false,
           "consent": false,
@@ -103,12 +110,21 @@
         "quantity": 2
       },
       "repulse": {
-        "distance": 200,
+        "distance": 400,
         "duration": 0.4,
         "factor": 100,
         "speed": 1,
         "maxSpeed": 50,
-        "easing": "ease-out-quad"
+        "easing": "ease-out-quad",
+        "divs": {
+          "distance": 200,
+          "duration": 0.4,
+          "factor": 100,
+          "speed": 1,
+          "maxSpeed": 50,
+          "easing": "ease-out-quad",
+          "selectors": {}
+        }
       },
       "slow": {
         "factor": 3,
@@ -171,7 +187,7 @@
       }
     },
     "color": {
-      "value": "#fff",
+      "value": "#ffffff",
       "animation": {
         "h": {
           "count": 0,
@@ -230,7 +246,7 @@
       },
       "decay": 0,
       "distance": {},
-      "direction": "bottom",
+      "direction": "none",
       "drift": 0,
       "enable": true,
       "gravity": {
@@ -256,12 +272,15 @@
       },
       "random": false,
       "size": false,
-      "speed": 2,
+      "speed": {
+        "min": 0.1,
+        "max": 1
+      },
       "spin": {
         "acceleration": 0,
         "enable": false
       },
-      "straight": true,
+      "straight": false,
       "trail": {
         "enable": false,
         "length": 10,
@@ -280,14 +299,17 @@
         "mode": "delete",
         "value": 0
       },
-      "value": 400
+      "value": 160
     },
     "opacity": {
-      "value": 1,
+      "value": {
+        "min": 0.1,
+        "max": 1
+      },
       "animation": {
         "count": 0,
-        "enable": false,
-        "speed": 2,
+        "enable": true,
+        "speed": 1,
         "decay": 0,
         "delay": 0,
         "sync": false,
@@ -315,7 +337,10 @@
       "type": "circle"
     },
     "size": {
-      "value": 10,
+      "value": {
+        "min": 1,
+        "max": 3
+      },
       "animation": {
         "count": 0,
         "enable": false,
@@ -332,13 +357,10 @@
       "width": 0
     },
     "zIndex": {
-      "value": {
-        "min": 0,
-        "max": 100
-      },
-      "opacityRate": 10,
-      "sizeRate": 10,
-      "velocityRate": 10
+      "value": 0,
+      "opacityRate": 1,
+      "sizeRate": 1,
+      "velocityRate": 1
     },
     "destroy": {
       "bounds": {},
@@ -395,10 +417,10 @@
       }
     },
     "wobble": {
-      "distance": 10,
-      "enable": true,
+      "distance": 5,
+      "enable": false,
       "speed": {
-        "angle": 10,
+        "angle": 50,
         "move": 10
       }
     },
@@ -480,8 +502,8 @@
   "style": {},
   "themes": [],
   "zLayers": 100,
-  "key": "snow",
-  "name": "Snow",
+  "key": "nasa",
+  "name": "NASA",
   "motion": {
     "disable": false,
     "reduce": {
