@@ -98,7 +98,7 @@ const ModalStake = ({
             Cancel
           </Button>
           <Button
-            color="warning"
+            color="primary"
             onPress={onConfirm}
             className="flex-1"
             isDisabled={!isAmountValid || isLoading}

@@ -27,7 +27,7 @@ export default function Navbar() {
     >
       <NavbarContent className="basis-1/5 xl:basis-full hidden xl:flex xl:flex-row items-center" justify="start">
         <Link href="/home" title="Home">
-          <Image src="/logo.png" alt="logo" className="min-w-11 min-h-11 w-11 h-11 rounded-full" width={50} height={50} />
+          <Image src="/logo.png" alt="logo" className="min-w-15 min-h-15 w-15 h-15 rounded-full" width={50} height={50} />
         </Link>
         <div className="relative flex items-center w-fit">
           <div className="realtive flex p-1">
@@ -46,7 +46,7 @@ export default function Navbar() {
                   {pathname.startsWith(item.href) && (
                     <motion.span
                       layoutId="bubble"
-                      className="absolute inset-0 z-10 border-b-2 border-warning -mb-1 mix-blend-difference rounded-none"
+                      className="absolute inset-0 z-10 border-b-2 border-primary -mb-1 mix-blend-difference rounded-none"
                       transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
                     />
                   )}

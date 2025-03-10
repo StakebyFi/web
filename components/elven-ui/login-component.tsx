@@ -70,7 +70,7 @@ export const LoginComponent = memo(() => {
           <Button
             className="w-full select-none h-auto py-3"
             variant="bordered"
-            color='warning'
+            color='primary'
             onPress={handleLogin(LoginMethodsEnum.walletconnect)}
           >
             xPortal Mobile App
@@ -78,7 +78,7 @@ export const LoginComponent = memo(() => {
           <Button
             className="w-full select-none h-auto py-3"
             variant="bordered"
-            color='warning'
+            color='primary'
             onPress={handleLogin(LoginMethodsEnum.extension)}
           >
             MultiversX Browser Extension
@@ -86,7 +86,7 @@ export const LoginComponent = memo(() => {
           <Button
             className="w-full select-none h-auto py-3"
             variant="bordered"
-            color='warning'
+            color='primary'
             onPress={handleLogin(LoginMethodsEnum.wallet)}
           >
             MultiversX Web Wallet
@@ -94,7 +94,7 @@ export const LoginComponent = memo(() => {
           <Button
             className="w-full select-none h-auto py-3"
             variant="bordered"
-            color='warning'
+            color='primary'
             onPress={handleLedgerAccountsList}
           >
             Ledger
@@ -102,7 +102,7 @@ export const LoginComponent = memo(() => {
           <Button
             className="w-full select-none h-auto py-3"
             variant="bordered"
-            color='warning'
+            color='primary'
             onPress={handleLogin(LoginMethodsEnum.xalias)}
           >
             xAlias

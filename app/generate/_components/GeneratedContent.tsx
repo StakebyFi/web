@@ -95,7 +95,7 @@ export default function GeneratedContent({
 
             <div className="flex flex-wrap gap-2 items-center justify-center">
               {sData && curStaking?.categories.map((category: string, idx: number) => (
-                <Chip key={idx} variant='bordered' color='warning' className='text-xs px-1'>
+                <Chip key={idx} variant='bordered' color='primary' className='text-xs px-1'>
                   {category.replace('-', ' ')}
                 </Chip>
               ))}

@@ -80,7 +80,7 @@ export default function QuestionnaireContent() {
         <Button
           type="submit"
           className="w-full py-2 px-4 rounded-md"
-          color="warning"
+          color="primary"
           disabled={mutation.isPending}
         >
           {mutation.isPending ? <Loader2 className="w-4 h-4 animate-spin" /> : <span>Submit</span>}

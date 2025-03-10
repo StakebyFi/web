@@ -57,9 +57,6 @@ export const LoginModalButton: FC<LoginModalButtonProps> = ({
             <Button color="danger" variant="light" onPress={onCloseM}>
               Close
             </Button>
-            <Button color="primary" onPress={onCloseM}>
-              Action
-            </Button>
           </ModalFooter>
         </ModalContent>
       </Modal>

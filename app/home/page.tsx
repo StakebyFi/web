@@ -1,6 +1,5 @@
 "use client";
 
-import { LinkSoniclabs } from "@/components/link/link-soniclabs";
 import { subtitle } from "@/components/primitives";
 import { cn } from "@/lib/utils";
 import { motion } from "framer-motion";
@@ -9,6 +8,8 @@ import { loadFull } from "tsparticles";
 import { ISourceOptions } from "@tsparticles/engine";
 import Particles, { initParticlesEngine } from "@tsparticles/react";
 import { useState, useEffect } from "react";
+import Link from "next/link";
+import { Button } from "@heroui/button";
 
 export default function Page() {
   const [init, setInit] = useState(false);
@@ -45,7 +46,7 @@ export default function Page() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.2 }}
             >
-              Kolective
+              StakebyFi
             </motion.span>
             <motion.span
               className={subtitle()}
@@ -53,10 +54,14 @@ export default function Page() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.4 }}
             >
-              Follow the Experts, Trade Smarter—Leverage Top Influencer Strategies to Maximize Your Yield.
+              Stake your assets based on your risk profile.
             </motion.span>
           </motion.div>
-          <LinkSoniclabs text="Let's Go" href="/strategy" />
+          <Link href="/generate">
+            <Button variant="shadow" color="primary">
+              Lets Go
+            </Button>
+          </Link>
         </div>
       </div>
     </section>

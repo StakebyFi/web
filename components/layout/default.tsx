@@ -34,7 +34,7 @@ export default function DefaultLayout({
                 title="soniclabs"
               >
                 <span className="text-default-600">Built in</span>
-                <p className="text-warning">Soniclabs</p>
+                <p className="text-primary">Metaversx</p>
               </Link>
             </footer>
           </div>
