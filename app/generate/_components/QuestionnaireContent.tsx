@@ -3,8 +3,8 @@ import { Button } from "@heroui/button";
 import { Form } from "@heroui/form";
 import { Select, SelectItem } from "@heroui/select";
 import { dataForm } from "@/data/dataForm";
-import { useGenerateAI } from "@/hooks/mutation/api/useGenerateAI";
 import { Loader2 } from "lucide-react";
+import { useGenerateAI } from "@/hooks/useGenerateAI";
 
 interface FormData {
   [key: number]: number | null;

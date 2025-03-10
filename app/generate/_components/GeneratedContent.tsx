@@ -3,15 +3,16 @@ import { Image } from '@heroui/image'
 import { Card } from '@heroui/card'
 import { Chip } from '@heroui/chip'
 import { ArrowDown, ChartArea, DollarSign, Loader2 } from 'lucide-react'
-import { formatPercent, formatUSD } from '@/lib/helper'
+import { formatPercent, formatUSD, normalizeAPY } from '@/lib/helper'
 import { Staking } from "@/types/staking";
-import { useCallback, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import Loading from "@/components/loader/loading";
 import ModalTransactionCustom from "@/components/modal/modal-transaction-custom";
 import ModalStake from "@/components/modal/modal-stake";
 import { useStaking } from "@/hooks/useStaking";
-import { TransactionCallbackParams, useAccount, useTransaction } from "@useelven/core";
+import { useAccount, useTransaction } from "@useelven/core";
 import { useTransactionState } from "@/hooks/useTransactionState";
+import { TokenTransfer, TransactionPayload } from "@multiversx/sdk-core/out";
 
 export default function GeneratedContent({
   risk,
@@ -21,23 +22,9 @@ export default function GeneratedContent({
   protocolId: string;
 }) {
   const { sData } = useStaking();
-  const { address, balance } = useAccount();
+  const { balance } = useAccount();
 
   const { result, handleTxCb } = useTransactionState();
-
-  const { pending, triggerTx } = useTransaction({ cb: handleTxCb, id: 'stake' });
-
-  const handleSendTx = () => {
-    const demoMessage =
-      'Stake ' + amountStaked + ' ' + curStaking?.nameToken + ' in ' + curStaking?.nameProject + ' with APY ' + curStaking?.apy + '%';
-
-    triggerTx({
-      address: transferAddress,
-      gasLimit: 50000 + 1500 * demoMessage.length,
-      data: new TransactionPayload(demoMessage),
-      value: TokenTransfer.egldFromAmount(egldTransferAmount),
-    });
-  };
 
   const [isModalTransactionOpen, setIsModalTransactionOpen] = useState<boolean>(false);
 
@@ -62,6 +49,20 @@ export default function GeneratedContent({
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
   const [amountStaked, setAmountStaked] = useState<string>("0");
 
+  const { pending, triggerTx } = useTransaction({ cb: handleTxCb, id: 'stake' });
+
+  const handleSendTx = () => {
+    const demoMessage =
+      'Stake ' + amountStaked + ' ' + curStaking?.nameToken + ' in ' + curStaking?.nameProject + ' with APY ' + curStaking?.apy + '%';
+
+    triggerTx({
+      address: curStaking?.addressStaking,
+      gasLimit: 50000 + 1500 * demoMessage.length,
+      data: new TransactionPayload(demoMessage),
+      value: TokenTransfer.egldFromAmount(amountStaked),
+    });
+  };
+
   const handleConfirmStake = () => {
     handleSendTx();
     setIsModalOpen(false);
@@ -71,7 +72,7 @@ export default function GeneratedContent({
 
   return (
     <div className="max-w-sm md:max-w-6xl">
-      {(mutation.isPending) && <Loading />}
+      {(pending) && <Loading />}
       <p className="text-neutral-800 dark:text-neutral-200 text-sm md:text-lg font-normal mb-4">
         You classified as <span className="font-semibold">{risk.includes("low") ? "Conservative" : risk.includes("medium") ? "Balanced" : risk.includes("high") ? "Aggressive" : ""}</span> risk. here&apos;s our recommended staking option:
       </p>
@@ -126,9 +127,9 @@ export default function GeneratedContent({
                 variant="bordered"
                 className="flex-1 md:flex-none flex items-center justify-center gap-2"
                 onPress={() => setIsModalOpen(true)}
-                disabled={mutation.isPending}
+                disabled={pending}
               >
-                {mutation.isPending ? <Loader2 className="w-4 h-4 animate-spin" /> : <span>Stake</span>}
+                {pending ? <Loader2 className="w-4 h-4 animate-spin" /> : <span>Stake</span>}
                 <ArrowDown className="w-4 h-4" />
               </Button>
             </div>
@@ -142,14 +143,14 @@ export default function GeneratedContent({
         amount={amountStaked}
         setAmount={setAmountStaked}
         tokenName={curStaking?.nameToken || ""}
-        isLoading={mutation.isPending}
+        isLoading={pending}
         maxAmount={Number(balance)}
       />
       <ModalTransactionCustom
         isOpen={isModalTransactionOpen}
         setIsOpen={closeModalTransaction}
-        status={mutation.status || ""}
-        data={result?.txhash || ""}
+        status={""}
+        data={result?.content || ""}
         name='stake'
       />
     </div>
