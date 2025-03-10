@@ -5,6 +5,7 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 export function urlScanner({ address, txHash, type }: { address?: string, txHash?: string, type?: 'transaction' | 'address' }) {
-  return `https://testnet.sonicscan.org//${type === 'address' ? 'address' : 'tx'}/${address || txHash}`;
+  return `https://devnet-explorer.multiversx.com/search/${address || txHash}`;
 }

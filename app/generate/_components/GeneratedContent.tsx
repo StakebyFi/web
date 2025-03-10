@@ -12,7 +12,7 @@ import ModalStake from "@/components/modal/modal-stake";
 import { useStaking } from "@/hooks/useStaking";
 import { useAccount, useTransaction } from "@useelven/core";
 import { useTransactionState } from "@/hooks/useTransactionState";
-import { TokenTransfer, TransactionPayload } from "@multiversx/sdk-core/out";
+import { ContractCallPayloadBuilder, ContractFunction, TokenTransfer } from "@multiversx/sdk-core/out";
 import { normalize } from "@/lib/bignumber";
 
 export default function GeneratedContent({
@@ -27,9 +27,9 @@ export default function GeneratedContent({
 
   const bNormalized = normalize((balance ?? 0), 18);
 
-  const { result, handleTxCb } = useTransactionState();
-
   const [isModalTransactionOpen, setIsModalTransactionOpen] = useState<boolean>(false);
+  
+  const { result, handleTxCb } = useTransactionState(setIsModalTransactionOpen);
 
   const [curStaking, setCurStaking] = useState<Staking | null>(null);
 
@@ -55,13 +55,14 @@ export default function GeneratedContent({
   const { pending, triggerTx } = useTransaction({ cb: handleTxCb, id: 'stake' });
 
   const handleSendTx = () => {
-    const demoMessage =
-      'Stake ' + amountStaked + ' ' + curStaking?.nameToken + ' in ' + curStaking?.nameProject + ' with APY ' + curStaking?.apy + '%';
+    const data = new ContractCallPayloadBuilder()
+    .setFunction(new ContractFunction('stake'))
+    .build();
 
     triggerTx({
       address: curStaking?.addressStaking,
-      gasLimit: 50000 + 1500 * demoMessage.length,
-      data: new TransactionPayload(demoMessage),
+      gasLimit: 5000000,
+      data: data,
       value: TokenTransfer.egldFromAmount(amountStaked),
     });
   };

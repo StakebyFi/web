@@ -30,8 +30,8 @@ export default function DefaultLayout({
               <Link
                 isExternal
                 className="flex items-center gap-1 text-current"
-                href="https://www.soniclabs.com/"
-                title="soniclabs"
+                href="https://multiversx.com/"
+                title="multiversx"
               >
                 <span className="text-default-600">Built in</span>
                 <p className="text-primary">Metaversx</p>

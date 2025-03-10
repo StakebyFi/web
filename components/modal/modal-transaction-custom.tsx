@@ -37,7 +37,7 @@ export default function ModalTransactionCustom({
             </>
           ) : (
             <>
-              <span>Your {name} is {status}, you can see transaction hash below:</span>
+              <span>Your {name} is {status || "success"}, you can see transaction hash below:</span>
               <span className='text-center'>Transaction Hash:</span>
               <Snippet
                 variant='flat'
