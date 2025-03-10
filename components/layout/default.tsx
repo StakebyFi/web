@@ -34,7 +34,7 @@ export default function DefaultLayout({
                 title="multiversx"
               >
                 <span className="text-default-600">Built in</span>
-                <p className="text-primary">Metaversx</p>
+                <p className="text-primary">Multiversx</p>
               </Link>
             </footer>
           </div>
