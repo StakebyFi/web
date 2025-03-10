@@ -37,6 +37,10 @@ export default function QuestionnaireContent() {
 
     mutation.mutate({
       formattedSubmission
+    }, {
+      onSuccess: () => {
+        window.location.reload();
+      }
     })
   };
 
