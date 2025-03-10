@@ -13,6 +13,7 @@ import { useStaking } from "@/hooks/useStaking";
 import { useAccount, useTransaction } from "@useelven/core";
 import { useTransactionState } from "@/hooks/useTransactionState";
 import { TokenTransfer, TransactionPayload } from "@multiversx/sdk-core/out";
+import { normalize } from "@/lib/bignumber";
 
 export default function GeneratedContent({
   risk,
@@ -23,6 +24,8 @@ export default function GeneratedContent({
 }) {
   const { sData } = useStaking();
   const { balance } = useAccount();
+
+  const bNormalized = normalize((balance ?? 0), 18);
 
   const { result, handleTxCb } = useTransactionState();
 
@@ -144,7 +147,7 @@ export default function GeneratedContent({
         setAmount={setAmountStaked}
         tokenName={curStaking?.nameToken || ""}
         isLoading={pending}
-        maxAmount={Number(balance)}
+        maxAmount={Number(bNormalized)}
       />
       <ModalTransactionCustom
         isOpen={isModalTransactionOpen}

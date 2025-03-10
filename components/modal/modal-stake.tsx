@@ -3,7 +3,6 @@ import { Modal, ModalContent, ModalHeader, ModalBody, ModalFooter } from '@herou
 import { Button } from '@heroui/button';
 import { Input } from '@heroui/input';
 import { DollarSign, Loader2 } from 'lucide-react';
-import { formatUSD } from '@/lib/helper';
 import { Link } from '@heroui/link';
 
 interface ModalStakeProps {
@@ -67,7 +66,7 @@ const ModalStake = ({
             <div className="flex justify-between text-sm">
               <span className="text-slate-500">Available to stake:</span>
               <span className="font-medium">
-                {formatUSD(maxAmount)} {tokenName}
+                {(maxAmount ?? 0).toFixed(2)} {tokenName}
               </span>
             </div>
             
@@ -85,7 +84,7 @@ const ModalStake = ({
               ))}
             </div>
 
-            <p>Goto page faucet if you dont have token by <Link href='/faucet'>click this</Link></p>
+            <p>Claim faucet if you dont have {tokenName} in <Link href='https://devnet-wallet.multiversx.com' isExternal>Multiversx Devnet</Link></p>
           </div>
         </ModalBody>
 
