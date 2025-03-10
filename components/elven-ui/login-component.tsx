@@ -1,13 +1,11 @@
-// Login component wraps all auth services in one place
-// You can always use only one of them if needed
 import { useCallback, memo, useState } from 'react';
 import { useLogin, LoginMethodsEnum } from '@useelven/core';
 import { WalletConnectQRCode } from './walletconnect-qr-code';
 import { WalletConnectPairings } from './walletconnect-pairings';
-import { Button } from '@/components/ui/button';
-import { Spinner } from '@/components/ui/spinner';
 import { LedgerAccountsList } from './ledger-accounts-list';
 import { getLoginMethodDeviceName } from '@/lib/get-signing-device-name';
+import { Button } from '@heroui/button';
+import { Spinner } from '@heroui/spinner';
 
 export const LoginComponent = memo(() => {
   const {
@@ -63,7 +61,7 @@ export const LoginComponent = memo(() => {
               </div>
             ) : null}
             <div className="flex items-center justify-center">
-              <Spinner size="26" />
+              <Spinner />
             </div>
           </div>
         </div>
@@ -71,36 +69,41 @@ export const LoginComponent = memo(() => {
         <div className="flex flex-col gap-3 items-center lg:px-8">
           <Button
             className="w-full select-none h-auto py-3"
-            variant="outline"
-            onClick={handleLogin(LoginMethodsEnum.walletconnect)}
+            variant="bordered"
+            color='warning'
+            onPress={handleLogin(LoginMethodsEnum.walletconnect)}
           >
             xPortal Mobile App
           </Button>
           <Button
             className="w-full select-none h-auto py-3"
-            variant="outline"
-            onClick={handleLogin(LoginMethodsEnum.extension)}
+            variant="bordered"
+            color='warning'
+            onPress={handleLogin(LoginMethodsEnum.extension)}
           >
             MultiversX Browser Extension
           </Button>
           <Button
             className="w-full select-none h-auto py-3"
-            variant="outline"
-            onClick={handleLogin(LoginMethodsEnum.wallet)}
+            variant="bordered"
+            color='warning'
+            onPress={handleLogin(LoginMethodsEnum.wallet)}
           >
             MultiversX Web Wallet
           </Button>
           <Button
             className="w-full select-none h-auto py-3"
-            variant="outline"
-            onClick={handleLedgerAccountsList}
+            variant="bordered"
+            color='warning'
+            onPress={handleLedgerAccountsList}
           >
             Ledger
           </Button>
           <Button
             className="w-full select-none h-auto py-3"
-            variant="outline"
-            onClick={handleLogin(LoginMethodsEnum.xalias)}
+            variant="bordered"
+            color='warning'
+            onPress={handleLogin(LoginMethodsEnum.xalias)}
           >
             xAlias
           </Button>

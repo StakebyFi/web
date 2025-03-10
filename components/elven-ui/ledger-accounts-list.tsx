@@ -1,10 +1,10 @@
 import { FC, useCallback, useState, useEffect, useRef } from 'react';
 import { useRouter } from 'next/navigation';
 import { LoginMethodsEnum } from '@useelven/core';
-import { Button } from '@/components/ui/button';
 import { shortenHash } from '@/lib/shorten-hash';
 import { errorParse } from '@/lib/error-parse';
-import { Spinner } from '@/components/ui/spinner';
+import { Spinner } from '@heroui/spinner';
+import { Button } from '@heroui/button';
 
 interface LedgerAccountsListProps {
   getHWAccounts: (page?: number, pageSize?: number) => Promise<string[]>;

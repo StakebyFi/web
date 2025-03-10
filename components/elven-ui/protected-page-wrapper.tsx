@@ -1,7 +1,7 @@
 import { useEffect, PropsWithChildren, FC } from 'react';
 import { useRouter } from 'next/router';
 import { useLogin } from '@useelven/core';
-import { Spinner } from '@/components/ui/spinner';
+import { Spinner } from '@heroui/spinner';
 
 interface ProtectedPageWrapper {
   redirectPath?: string;

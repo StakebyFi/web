@@ -1,16 +1,11 @@
 'use client';
 
-import { FC, useState } from 'react';
+import { FC } from 'react';
 import { useLogin, useLogout } from '@useelven/core';
-import {
-  Dialog,
-  DialogContent,
-  DialogHeader,
-  DialogTitle,
-} from '@/components/ui/dialog';
-import { Button } from '@/components/ui/button';
 import { LoginComponent } from './login-component';
-import { useEffectOnlyOnUpdate } from '@/hooks/use-effect-only-on-update';
+import { Button } from '@heroui/button';
+import { Modal, ModalBody, ModalContent, ModalFooter, ModalHeader, useDisclosure } from '@heroui/modal';
+import { useEffectOnlyOnUpdate } from '@/hooks/useEffectOnlyOnUpdate';
 
 interface LoginModalButtonProps {
   onClose?: () => void;
@@ -21,51 +16,53 @@ export const LoginModalButton: FC<LoginModalButtonProps> = ({
   onClose,
   onOpen,
 }) => {
-  const [isOpen, setIsOpen] = useState(false);
-  const { isLoggedIn, isLoggingIn, setLoggingInState } = useLogin();
+  const { isLoggedIn, isLoggingIn } = useLogin();
+
+  const { isOpen: isOpenM, onOpen: onOpenM, onOpenChange, onClose: onCloseM } = useDisclosure();
 
   const { logout } = useLogout();
 
   useEffectOnlyOnUpdate(() => {
     if (isLoggedIn) {
-      setIsOpen(false);
+      onCloseM();
       onClose?.();
     }
   }, [isLoggedIn]);
 
-  const onCloseComplete = (open: boolean) => {
-    if (!open) {
-      setIsOpen(false);
-      setTimeout(() => {
-        setLoggingInState('error', '');
-      }, 1000);
-    }
-  };
-
   const handleOpen = () => {
-    setIsOpen(true);
+    onOpenM();
     onOpen?.();
   };
 
   return (
-    <Dialog open={isOpen} onOpenChange={onCloseComplete}>
+    <>
       {isLoggedIn ? (
-        <Button variant="outline" onClick={() => logout()}>
+        <Button variant="bordered" onPress={() => logout()}>
           Disconnect
         </Button>
       ) : (
-        <Button variant="outline" onClick={handleOpen}>
+        <Button variant="bordered" onPress={handleOpen}>
           {isLoggingIn ? 'Connecting...' : 'Connect'}
         </Button>
       )}
-      <DialogContent className="max-w-xs sm:max-w-lg bg-white dark:bg-zinc-950 p-0">
-        <DialogHeader className="px-6 pt-6">
-          <DialogTitle>Connect your wallet</DialogTitle>
-        </DialogHeader>
-        <div className="grid gap-4 overflow-y-auto max-h-[calc(100vh-160px)] px-6 pb-12 pt-6">
-          <LoginComponent />
-        </div>
-      </DialogContent>
-    </Dialog>
+      <Modal isOpen={isOpenM} onOpenChange={onOpenChange}>
+        <ModalContent className="max-w-xs sm:max-w-lg bg-white dark:bg-zinc-950 p-0">
+          <ModalHeader className="flex flex-col gap-1">Modal Title</ModalHeader>
+          <ModalBody>
+            <div className="grid gap-4 overflow-y-auto max-h-[calc(100vh-160px)] px-6 pb-12 pt-6">
+              <LoginComponent />
+            </div>
+          </ModalBody>
+          <ModalFooter>
+            <Button color="danger" variant="light" onPress={onCloseM}>
+              Close
+            </Button>
+            <Button color="primary" onPress={onCloseM}>
+              Action
+            </Button>
+          </ModalFooter>
+        </ModalContent>
+      </Modal>
+    </>
   );
 };

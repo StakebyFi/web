@@ -2,7 +2,7 @@ import { useEffect, useState, FunctionComponent } from 'react';
 import { useConfig } from '@useelven/core';
 import { isMobile } from '@/lib/is-mobile';
 import QRCode from 'qrcode';
-import { Button } from '@/components/ui/button';
+import { Button } from '@heroui/button';
 
 interface WalletConnectQRCodeProps {
   uri: string;
@@ -35,7 +35,7 @@ export const WalletConnectQRCode: FunctionComponent<
     <div>
       {mobile ? (
         <div className="flex justify-center w-full mb-6">
-          <Button asChild>
+          <Button>
             <a
               href={`${walletConnectDeepLink}?wallet-connect=${encodeURIComponent(
                 uri

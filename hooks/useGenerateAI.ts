@@ -5,11 +5,13 @@ import useGenerateContent from "@/hooks/useGeneratedContent";
 import { useStaking } from "./useStaking";
 import apiAgent from "@/config/api-agent.config";
 import { Staking } from "@/types/staking";
+import { useAccount } from "@useelven/core";
 
 type Status = "idle" | "loading" | "success" | "error";
 
 export const useGenerateAI = () => {
   const { sData } = useStaking();
+  const { address } = useAccount();
 
   const { risk, setRisk, protocolId, setProtocolId } = useGenerateContent();
 

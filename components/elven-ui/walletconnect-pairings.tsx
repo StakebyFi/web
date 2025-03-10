@@ -1,7 +1,7 @@
 import { FC, MouseEventHandler } from 'react';
 import { PairingTypesStruct } from '@useelven/core';
 import { X } from 'lucide-react';
-import { Button } from '@/components/ui/button';
+import { Button } from '@heroui/button';
 
 interface WalletConnectPairingsProps {
   pairings: PairingTypesStruct[];
@@ -38,8 +38,7 @@ export const WalletConnectPairings: FC<WalletConnectPairingsProps> = ({
             onClick={handleLogin(pairing.topic)}
           >
             <Button
-              variant="outline"
-              size="icon"
+              variant="bordered"
               className="absolute top-2 right-2 h-7 w-7"
               onClick={handleRemove(pairing.topic)}
             >
