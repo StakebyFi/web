@@ -11,6 +11,7 @@ import { motion } from "framer-motion";
 import { WalletComponents } from "./wallet";
 import { usePathname } from "next/navigation";
 import Image from "next/image";
+import { BookText } from "lucide-react";
 
 export default function Navbar() {
   const pathname = usePathname()
@@ -60,6 +61,9 @@ export default function Navbar() {
 
       <NavbarContent className="hidden xl:flex basis-1/5 xl:basis-full items-center mb-3 pt-3" justify="end">
         <NavbarItem className="hidden xl:flex items-center gap-4">
+          <Link target="_blank" href={siteConfig.links.docs} title="Docs">
+            <BookText className="text-default-500 h-5 w-5" />
+          </Link>
           <Link target="_blank" href={siteConfig.links.github} title="GitHub">
             <GithubIcon className="text-default-500" />
           </Link>
@@ -72,6 +76,9 @@ export default function Navbar() {
         <div className="flex justify-between items-center w-full">
           <NavbarMenuToggle className="p-5 -ml-5" />
           <div className="flex flex-row gap-3 items-center">
+            <Link target="_blank" href={siteConfig.links.docs} title="Docs">
+              <BookText className="text-default-500 h-5 w-5" />
+            </Link>
             <Link target="_blank" href={siteConfig.links.github} title="GitHub">
               <GithubIcon className="text-default-500" />
             </Link>

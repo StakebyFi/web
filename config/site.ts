@@ -24,6 +24,7 @@ export const siteConfig = {
     }
   ],
   links: {
-    github: "https://github.com/StakebyFi"
+    github: "https://github.com/StakebyFi",
+    docs: "https://stakebyfi.gitbook.io/docs"
   },
 };
